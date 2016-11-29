@@ -1,4 +1,4 @@
-package com.tutorialspoint;
+package com.controller;
 import java.util.Date;  
 import java.util.Properties;  
   
@@ -15,14 +15,14 @@ public class SendEmail {
   
     public SendEmail()  
     {  
-        // 变量初始化  
+        // �?��?�?始化  
         host = "smtp.qq.com";  
         username = "";  
         password = "";  
         fromAddr = "@";  
     }  
   
-    // 发送邮件  
+    // �?��?邮件  
     public boolean sendMail()  
     {  
         Properties prop;  
@@ -31,40 +31,40 @@ public class SendEmail {
   
         try  
         {  
-            prop = new Properties(); // 存储连接参数  
+            prop = new Properties(); // 存储连接�?�数  
             prop.put("mail.smtp.host",host);  
             prop.put("mail.smtp.auth","true");  
   
             session = Session.getDefaultInstance(prop,null); // 获得一个邮件的Session  
-            msg = new MimeMessage(session); // 邮件信息  
+            msg = new MimeMessage(session); // 邮件信�?�  
   
-            // 检查邮件地址是否合法  
+            // 检查邮件地�?�是�?��?�法  
             if(fromAddr == null || fromAddr.equals(""))  
             {  
-                throw new Exception("发件地址错误");  
+                throw new Exception("�?�件地�?�错误");  
             }  
             if(toAddr == null || toAddr.equals(""))  
             {  
-                throw new Exception("目标地址错误");  
+                throw new Exception("目标地�?�错误");  
             }  
   
-            //设置源地址  
+            //设置�?地�?�  
             msg.setFrom(new InternetAddress(fromAddr));  
-            //设置目的地址  
+            //设置目的地�?�  
             msg.setRecipient(Message.RecipientType.TO,new InternetAddress(toAddr));  
             //设置主题  
             msg.setSubject(subject);  
   
             Multipart mp = new MimeMultipart(); //邮件内容  
             MimeBodyPart mbpContent = new MimeBodyPart();  
-            mbpContent.setContent(content,"text/html"); // 邮件格式  
+            mbpContent.setContent(content,"text/html"); // 邮件格�?  
   
   
             mp.addBodyPart(mbpContent);  
             msg.setContent(mp);  
             msg.setSentDate(new Date());  
   
-            // 发送邮件  
+            // �?��?邮件  
             Transport transport = session.getTransport("smtp");  
             transport.connect((String)prop.get("mail.smtp.host"),username,password);  
             transport.sendMessage(msg,msg.getRecipients(MimeMessage.RecipientType.TO));  

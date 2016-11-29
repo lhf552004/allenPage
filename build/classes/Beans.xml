@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd ">
+
+	<!-- Initialization for data source -->
+	<bean id="CSharp" class="com.businessObject.Skill">
+		<property name="name" value="C#" />
+		<property name="projects">
+			<list>
+				<ref bean="Lottery" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="Java" class="com.businessObject.Skill">
+	    <property name="name" value="C#" />
+		<property name="projects">
+			<list>
+				<ref bean="Convertor" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="Lottery" class="com.businessObject.Project">
+		<property name="name" value="MBLottery" />
+		<property name="description"
+			value="In our company’s annual meeting, there is a lottery action. To avoid intervention from person, I made this
+Software - it tries to make it fair for everyone. The purpose of this software is to just make fun." />
+		<property name="url" value="https://github.com/lhf552004/MBLottery" />
+	</bean>
+	
+	<bean id="Convertor" class="com.businessObject.Project">
+		<property name="name" value="MBLottery" />
+		<property name="description"
+			value="It is to help one of my colleagues to translate new LGF file with other machine’s LGF file. The programming language is Java." />
+		<property name="url" value="https://github.com/lhf552004/Convertor" />
+	</bean>
+</beans>
